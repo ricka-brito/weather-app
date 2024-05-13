@@ -1,0 +1,22 @@
+<div class="bg-darker-gray w-full p-5 animate-a-grow rounded-[1rem] flex flex-col" *ngIf="airQualityInfo | async as infos">
+  <div class="flex w-full items-center justify-between">
+    <h2 class="text-[#7e7e7e] font-normal  text-xl">Air Quality Index</h2>
+    <span
+      class="px-3 py-[2px] rounded-full text-[1.1rem] h-fit "
+      [ngStyle]="{'background-color':aqiText[infos.aqi-1].color}"
+    >
+      {{aqiText[infos.aqi-1].level}}
+    </span>
+  </div>
+  <div class="flex items-center w-full my-8">
+    <img src="../../../assets/svg/weather-gale.svg" class="size-14"/>
+    <div *ngFor="let item of infos.components" class="flex flex-col items-center justify-between flex-1">
+      <h1 class="text-[#555] text-xl mb-2">
+        {{item.name[0]}}<span class="text-sm">{{item.name[1]}}</span>
+      </h1>
+      <h1 class="text-white text-3xl">
+        {{item.value}}
+      </h1>
+    </div>
+  </div>
+</div>

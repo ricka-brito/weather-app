@@ -1,0 +1,29 @@
+<div #searchbar class="flex p-4 rounded-full bg-gray relative border-[#333] border-[1px]">
+  <div class="size-8 ml-3">
+    <ng-content></ng-content>
+  </div>
+  <input
+    class="outline-none bg-gray text-[#fff] ml-3 w-full"
+    name="search"
+    placeholder="Search city"
+    (input)="onInput($event)"
+  />
+  <div
+    class="absolute top-[110%] left-0 w-full bg-gray rounded-[2rem] border-[#333] border-[1px] overflow-hidden"
+    *ngIf="isSearching && (locations | async)"
+  >
+    <div
+      class="flex p-4 items-center hover:bg-[#2c2a2f] cursor-pointer"
+      *ngFor="let location of (locations | async)?.slice(0, 3)"
+      (click)="onSelect(location)"
+    >
+      <img src="../../../assets/svg/locator.svg" class="size-9 mr-4" />
+      <span>
+        <h1 class="text-white text-[1.1rem]">{{ location.name }}</h1>
+        <h2 class="text-[#777] text-sm">
+          {{ location.state }} - {{ location.country }}
+        </h2>
+      </span>
+    </div>
+  </div>
+</div>

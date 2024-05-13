@@ -1,0 +1,20 @@
+<article class="bg-gray p-8 rounded-[2rem]" *ngIf="infos | async as infos">
+  <h2 class="text-light-white text-xl">Now</h2>
+  <div class="flex items-center justify-between my-2">
+    <h1 class="text-white text-6xl text-left -ml-1">
+      {{ infos.main.temp | temperature }}
+    </h1>
+    <img [src]="'../../../assets/weather_icons/' + infos.weather[0].icon + '.png'" />
+  </div>
+  <h2 class="text-light-white">{{ infos.weather[0].description | titlecase}}</h2>
+  <hr class="border-[#505050] my-5"/>
+  <div class="flex items-center mb-4">
+    <img src="'../../../assets/svg/calendar.svg" class="size-8"/>
+    <h2 class="text-[#7e7e7e] ml-4">{{ date | date }}</h2>
+  </div>
+  <div class="flex items-center">
+    <img src="'../../../assets/svg/locator.svg" class="size-8"/>
+    <h2 class="text-[#7e7e7e] ml-4">{{ infos.name + " " + infos.sys.country }}</h2>
+  </div>
+
+</article>

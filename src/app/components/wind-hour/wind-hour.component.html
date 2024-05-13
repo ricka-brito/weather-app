@@ -1,0 +1,5 @@
+<div class="flex-col flex bg-gray items-center py-5 px-6 w-[120px] justify-center rounded-[1rem]">
+  <h1 class="text-white">{{((hour! + timezone!)*1000) | date:'shortTime':'UTC'}}</h1>
+  <img [src]="'../../../assets/weather_icons/direction.png'" class="size-12 my-2" [ngStyle]="{'transform': 'rotate('+(iconDirection!-180)+'deg)'}" />
+  <h1 class="text-white">{{velocity!*3.6 | number: '1.0-1'}}Km/h</h1>
+</div>

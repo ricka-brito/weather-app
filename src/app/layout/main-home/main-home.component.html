@@ -1,0 +1,42 @@
+<main
+  class="flex"
+  *ngIf="
+    (currentWeatherInfo | async) &&
+    (forecastWeatherInfo | async) &&
+    (airQualityInfo | async)
+  "
+>
+  <aside class="flex-[0.4] px-8 gap-y-5 flex flex-col sticky top-2 self-start">
+    <app-current-cast
+      class="animate-a-grow"
+      [infos]="currentWeatherInfo"
+    ></app-current-cast>
+    <h1 class="text-white text-xl font-semibold text-center animate-a-grow">
+      5 Days Forecast
+    </h1>
+    <app-forecast
+      class="animate-a-grow"
+      [infos]="forecastWeatherInfo"
+    ></app-forecast>
+  </aside>
+  <section class="flex-1 pr-8 h-fit">
+    <app-highlights
+      lights
+      [airQualityInfo]="airQualityInfo"
+      [weatherInfo]="currentWeatherInfo"
+    ></app-highlights>
+    <h1 class="text-white text-xl font-semibold my-4 animate-a-grow">
+      Today at
+    </h1>
+    <div class="w-[65vw] scroll overflow-x-scroll flex gap-y-4 flex-col">
+      <app-today-forecast
+        class="w-full"
+        [forecastInfo]="forecastWeatherInfo"
+      ></app-today-forecast>
+      <app-today-wind
+        class="w-full"
+        [forecastInfo]="forecastWeatherInfo"
+      ></app-today-wind>
+    </div>
+  </section>
+</main>

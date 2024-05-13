@@ -1,0 +1,13 @@
+<button
+  class="px-6 p-3 bg-primary flex items-center rounded-full disabled:bg-[#3e3d40]"
+  (click)="onClickButton($event)"
+  [disabled]="disabled"
+  [ngClass]="{'cursor-not-allowed': disabled}"
+>
+  <div class="size-6 mr-3" [ngClass]="{ filtered: disabled }">
+    <ng-content></ng-content>
+  </div>
+  <span class="font-semibold" [ngClass]="{ 'text-[#7b7980]': disabled }">
+    {{ text }}
+  </span>
+</button>

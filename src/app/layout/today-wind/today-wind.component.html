@@ -1,0 +1,11 @@
+<div *ngIf="forecastInfo | async as forecast">
+  <div class="flex gap-4">
+    <app-wind-hour
+      [hour]="item.dt"
+      [timezone]="forecast.city.timezone"
+      [iconDirection]="item.wind.deg"
+      [velocity]="item.wind.speed"
+      *ngFor="let item of forecast.list.slice(0, 9)"
+    />
+  </div>
+</div>

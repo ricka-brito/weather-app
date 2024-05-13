@@ -1,0 +1,23 @@
+<article
+  class="bg-gray p-8 rounded-[2rem] space-y-3"
+  *ngIf="infos | async as infos"
+>
+  <div
+    *ngFor="let item of infos.list | forecast"
+    class="flex items-center justify-between"
+  >
+    <div class="flex items-center flex-1">
+      <img
+        [src]="'../../../assets/weather_icons/' + item.weather[0].icon + '.png'"
+        class="size-12"
+      />
+      <h1 class="text-light-white ml-3 font-medium text-2xl">
+        {{ item.main.temp_max | temperature : false }}
+      </h1>
+    </div>
+
+    <div class="flex flex-1 justify-end">
+      <h1 class="text-[#6b6b6b]">{{ item.dt_txt | date : "dd MMM, EEE" }}</h1>
+    </div>
+  </div>
+</article>

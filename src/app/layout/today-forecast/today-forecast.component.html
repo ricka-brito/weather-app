@@ -1,0 +1,11 @@
+<div *ngIf="forecastInfo | async as forecast" class="">
+  <div class="flex gap-4">
+    <app-temperature-hour
+      [hour]="item.dt"
+      [timezone]="forecast.city.timezone"
+      [icon]="item.weather[0].icon"
+      [temperature]="item.main.temp"
+      *ngFor="let item of forecast.list.slice(0, 9)"
+    />
+  </div>
+</div>

@@ -1,0 +1,13 @@
+<article class="bg-gray h-full rounded-[2rem] p-8 animate-a-grow">
+  <h1 class="text-light-white text-xl mb-5">Today Highlights</h1>
+  <div class="space-y-8 flex flex-col">
+    <app-air-quality [airQualityInfo]="airQualityInfo"></app-air-quality>
+    <app-sunrise-sunset [infos]="weatherInfo"></app-sunrise-sunset>
+    <div class="grid-cols-2 grid-rows-2 grid gap-6" *ngIf="weatherInfo | async as specs">
+      <app-specific-info title="Humidity" [value]="specs.main.humidity" suffix="%"><img src="../../../assets/svg/drop.svg" class="size-10"></app-specific-info>
+      <app-specific-info title="Pressure" [value]="specs.main.pressure" suffix=" hba"><img src="../../../assets/svg/air.svg" class="size-10"></app-specific-info>
+      <app-specific-info title="Visibility" [value]="specs.visibility / 1000" suffix=" KM"><img src="../../../assets/svg/watch-on.svg" class="size-10"></app-specific-info>
+      <app-specific-info title="Temperature" [value]="(specs.main.feels_like | number: '1.0-0')!+'°'" suffix="C"><img src="../../../assets/svg/temperature.svg" class="size-10"></app-specific-info>
+    </div>
+  </div>
+</article>

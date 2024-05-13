@@ -1,0 +1,5 @@
+<header class="flex w-full justify-between px-8 py-10 items-center">
+    <img src="../../../assets/logo.png" class="w-40 object-contain">
+    <app-search-bar class="w-[500px]"  (setlocationNameEvent)="setLocationName($event)"><img src="../../../assets/svg/search.svg" /></app-search-bar>
+    <app-button text="Current Location" (onClick)="handleLocation($event)" ><img src="../../../assets/svg/locator-spot.svg" /></app-button>
+</header>

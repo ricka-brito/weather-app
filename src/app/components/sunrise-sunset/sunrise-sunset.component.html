@@ -1,0 +1,24 @@
+<div
+  class="bg-darker-gray w-full p-5 animate-a-grow rounded-[1rem] flex flex-col"
+  *ngIf="infos | async as data"
+  >
+  <div class="flex w-full items-center">
+    <h2 class="text-[#7e7e7e] font-normal text-xl">Sunrise & Sunset</h2>
+  </div>
+  <div class="flex items-center w-full mt-6 mb-3">
+    <div class="flex flex-row items-center flex-1">
+      <img src="../../../assets/svg/sun.svg" class="size-12 mr-3" />
+      <div>
+        <h1 class="text-white text-md">Sunrise</h1>
+        <h1 class="text-white text-3xl">{{((data.sys.sunrise + data.timezone)*1000) | date:'shortTime':'UTC'}}</h1>
+      </div>
+    </div>
+    <div class="flex flex-row items-center flex-1">
+      <img src="../../../assets/svg/moon.svg" class="size-12 mr-3" />
+      <div>
+        <h1 class="text-white text-md">Sunset</h1>
+        <h1 class="text-white text-3xl">{{((data.sys.sunset + data.timezone)*1000) | date:'shortTime':'UTC'}}</h1>
+      </div>
+    </div>
+  </div>
+</div>
